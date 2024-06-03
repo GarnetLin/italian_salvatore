@@ -11,16 +11,16 @@ class Pizza extends FoodSkeleton {
             ...this.state,
             size: props.size,
             crust: props.crust || 'thin',
-            extraSauces: props.extraSauces || [],
-            extraIngredients: props.extraIngredients || [],
+            sauces: props.sauces || [],
+            ingredients: props.ingredients || [],
             basePrice: 10
         };
     }
 
     calculatePrice() {
-        const extraSaucesPrice = this.state.extraSauces.length * 0.5;
-        const extraIngredientsPrice = this.state.extraIngredients.length;
-        return this.state.basePrice + extraSaucesPrice + extraIngredientsPrice;
+        const saucesPrice = this.state.sauces.length * 0.5;
+        const ingredientsPrice = this.state.ingredients.length;
+        return this.state.basePrice + saucesPrice + ingredientsPrice;
     }
 
     handleCrustChange = e => {
@@ -28,29 +28,61 @@ class Pizza extends FoodSkeleton {
         this.setState({ crust: selectedCrust });
     }
 
-    handleChange = selectedOption => {
-        this.setState({ extraIngredients: selectedOption || []});
+    handleChangeIngredients = selectedIngredients => {
+        this.setState({ ingredients: selectedIngredients || []});
+    }
+
+    handleChangeSauces = selectedSauces => {
+        this.setState({ sauces: selectedSauces || []});
     }
 
     render() {
-        const options = [
+        const ingredients = [
             { value: 'tomatoes', label: 'Tomatoes' },
             { value: 'mushrooms', label: 'Mushrooms' },
             { value: 'pepperoni', label: 'Pepperoni' },
             { value: 'cheese', label: 'Cheese' },
-            { value: 'olives', label: 'Olives' }
+            { value: 'olives', label: 'Olives' },
+            { value: 'pepper', label: 'Bell pepper' },
+            { value: 'chicken', label: 'Chicken' },
+            { value: 'onions', label: 'Onions' }
+
+        ]
+
+        const sauces = [
+            { value: 'bbq', label: 'BBQ' },
+            { value: 'garlic', label: 'Garlic' },
+            { value: 'alfredo', label: 'Alfredo' },
+            { value: 'tomato', label: 'Tomato' },
+            { value: 'pesto', label: 'Pesto' }
         ]
 
         return (
             <div className='wrapper'>
                 <div>
                     <label>Choose crust:</label>
-                    <select value={this.state.crust} onChange={this.handleCrustChange} className='selection'>
+                    <select value={this.state.crust} 
+                            onChange={this.handleCrustChange} 
+                            className='selection'>
                         <option value="thin">Thin</option>
                         <option value="thick">Thick</option>
                     </select>
-                    <Select options={options} isMulti onChange={this.handleChange} className='react-select'/>
+                    <div>
+                        <p>Choose ingredients:</p>
+                        <Select options={ingredients} 
+                                isMulti 
+                                onChange={this.handleChangeIngredients} 
+                                className='react-select'/>
+                    </div>
+                    <div>
+                        <p>Choose sauces:</p>
+                        <Select options={sauces} 
+                                isMulti 
+                                onChange={this.handleChangeSauces} 
+                                className='react-select'/>
+                    </div>
                 </div>
+                <br/>
                 {super.render()}
             </div>
         );

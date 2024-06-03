@@ -41,6 +41,7 @@ class Sorbet extends FoodSkeleton {
                         <option value="mango">Mango</option>
                     </select>
                 </div>
+                <br/>
                 {super.render()}
             </div>
         );
