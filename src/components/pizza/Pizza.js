@@ -94,7 +94,7 @@ class Pizza extends FoodSkeleton {
                     <Select 
                         options={ingredients} 
                         isMulti 
-                        onChange={this.handleChangeSelection} 
+                        onChange={this.handleChangeSelection('ingredients')} 
                         className='react-select'/>
                 </div>
                 <div>
@@ -102,7 +102,7 @@ class Pizza extends FoodSkeleton {
                     <Select 
                         options={sauces} 
                         isMulti 
-                        onChange={this.handleChangeSelection} 
+                        onChange={this.handleChangeSelection('sauces')} 
                         className='react-select'/>
                 </div>
             </>
