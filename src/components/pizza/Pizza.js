@@ -13,7 +13,7 @@ class Pizza extends FoodSkeleton {
             crust: props.crust || 'thin',
             sauces: props.sauces || [],
             ingredients: props.ingredients || [],
-            basePrice: 10
+            basePrice: 5
         };
     }
 
@@ -26,6 +26,11 @@ class Pizza extends FoodSkeleton {
     handleCrustChange = e => {
         const selectedCrust = e.target.value;
         this.setState({ crust: selectedCrust });
+    }
+
+    handleSizeChange = e => {
+        const selectedSize = e.target.value;
+        this.setState({ size: selectedSize });
     }
 
     handleChangeIngredients = selectedIngredients => {
@@ -60,6 +65,14 @@ class Pizza extends FoodSkeleton {
         return (
             <div className='wrapper'>
                 <div>
+                    <label>Choose size:</label>
+                    <select value={this.state.crust} 
+                            onChange={this.handleCrustChange} 
+                            className='selection'>
+                        <option value="small">Small</option>
+                        <option value="medium">Medium</option>
+                        <option value="large">Large</option>
+                    </select>
                     <label>Choose crust:</label>
                     <select value={this.state.crust} 
                             onChange={this.handleCrustChange} 
