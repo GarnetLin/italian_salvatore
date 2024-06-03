@@ -38,12 +38,8 @@ class Pizza extends FoodSkeleton {
         this.setState({ crust: selectedCrust });
     }
 
-    handleChangeIngredients = selectedIngredients => {
-        this.setState({ ingredients: selectedIngredients || []});
-    }
-
-    handleChangeSauces = selectedSauces => {
-        this.setState({ sauces: selectedSauces || []});
+    handleChangeSelection = (property) => (selectedOptions) => {
+        this.setState({ [property]: selectedOptions || [] });
     }
 
     resetIngredientsAndSauces() {
@@ -98,7 +94,7 @@ class Pizza extends FoodSkeleton {
                     <Select 
                         options={ingredients} 
                         isMulti 
-                        onChange={this.handleChangeIngredients} 
+                        onChange={this.handleChangeSelection} 
                         className='react-select'/>
                 </div>
                 <div>
@@ -106,7 +102,7 @@ class Pizza extends FoodSkeleton {
                     <Select 
                         options={sauces} 
                         isMulti 
-                        onChange={this.handleChangeSauces} 
+                        onChange={this.handleChangeSelection} 
                         className='react-select'/>
                 </div>
             </>
