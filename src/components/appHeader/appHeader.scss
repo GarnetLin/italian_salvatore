@@ -1,5 +1,8 @@
-.app-header {
+.app-header > * {
+    margin: 0 auto;
     text-align: center;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    color: #88ACF7;
+    color: green;
+    font-size: 60px;
+
 }

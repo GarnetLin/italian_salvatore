@@ -1,0 +1,12 @@
+.main-content {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+}
+
+.main-content > * {
+    margin: 0; /* Remove margin */
+    padding: 0; /* Remove padding */
+}

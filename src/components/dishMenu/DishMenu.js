@@ -10,13 +10,17 @@ const DishMenu = () => {
 	return (
 		<div className='wrapper'>
 			<Accordion defaultActiveKey="0">
-				<Accordion.Item eventKey="0">
+				<Accordion.Item 
+						eventKey="0" 
+						className="tab">
 					<Accordion.Header>Pizza</Accordion.Header>
 					<Accordion.Body>
 						<Pizza/>
 					</Accordion.Body>
 				</Accordion.Item>
-				<Accordion.Item eventKey="1">
+				<Accordion.Item 
+						eventKey="1" 
+						className="tab"> 
 					<Accordion.Header>Sorbet</Accordion.Header>
 					<Accordion.Body>
 						<Sorbet/>
