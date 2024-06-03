@@ -9,18 +9,24 @@ class Pizza extends FoodSkeleton {
         super(props);
         this.state = {
             ...this.state,
-            size: props.size,
+            size: props.size || 'small',
             crust: props.crust || 'thin',
             sauces: props.sauces || [],
             ingredients: props.ingredients || [],
-            basePrice: 5
+            basePrice: 5,
+            sizePrices: {
+                small: 5,
+                medium: 7,
+                large: 9,
+            }
         };
     }
 
     calculatePrice() {
+        const basePrice = this.state.sizePrices[this.state.size];
         const saucesPrice = this.state.sauces.length * 0.5;
         const ingredientsPrice = this.state.ingredients.length;
-        return this.state.basePrice + saucesPrice + ingredientsPrice;
+        return basePrice + saucesPrice + ingredientsPrice;
     }
 
     handleCrustChange = e => {
@@ -30,7 +36,8 @@ class Pizza extends FoodSkeleton {
 
     handleSizeChange = e => {
         const selectedSize = e.target.value;
-        this.setState({ size: selectedSize });
+        const basePrice = this.state.sizePrices[selectedSize];
+        this.setState({ size: selectedSize, basePrice: basePrice });
     }
 
     handleChangeIngredients = selectedIngredients => {
@@ -51,8 +58,7 @@ class Pizza extends FoodSkeleton {
             { value: 'pepper', label: 'Bell pepper' },
             { value: 'chicken', label: 'Chicken' },
             { value: 'onions', label: 'Onions' }
-
-        ]
+        ];
 
         const sauces = [
             { value: 'bbq', label: 'BBQ' },
@@ -60,39 +66,43 @@ class Pizza extends FoodSkeleton {
             { value: 'alfredo', label: 'Alfredo' },
             { value: 'tomato', label: 'Tomato' },
             { value: 'pesto', label: 'Pesto' }
-        ]
+        ];
 
         return (
-            <div className='wrapper'>
+            <div className='pizza'>
                 <div>
                     <label>Choose size:</label>
-                    <select value={this.state.crust} 
-                            onChange={this.handleCrustChange} 
-                            className='selection'>
+                    <select 
+                        value={this.state.size} 
+                        onChange={this.handleSizeChange} 
+                        className='selection'>
                         <option value="small">Small</option>
                         <option value="medium">Medium</option>
                         <option value="large">Large</option>
                     </select>
                     <label>Choose crust:</label>
-                    <select value={this.state.crust} 
-                            onChange={this.handleCrustChange} 
-                            className='selection'>
+                    <select 
+                        value={this.state.crust} 
+                        onChange={this.handleCrustChange} 
+                        className='selection'>
                         <option value="thin">Thin</option>
                         <option value="thick">Thick</option>
                     </select>
                     <div>
                         <p>Choose ingredients:</p>
-                        <Select options={ingredients} 
-                                isMulti 
-                                onChange={this.handleChangeIngredients} 
-                                className='react-select'/>
+                        <Select 
+                            options={ingredients} 
+                            isMulti 
+                            onChange={this.handleChangeIngredients} 
+                            className='react-select'/>
                     </div>
                     <div>
                         <p>Choose sauces:</p>
-                        <Select options={sauces} 
-                                isMulti 
-                                onChange={this.handleChangeSauces} 
-                                className='react-select'/>
+                        <Select 
+                            options={sauces} 
+                            isMulti 
+                            onChange={this.handleChangeSauces} 
+                            className='react-select'/>
                     </div>
                 </div>
                 <br/>

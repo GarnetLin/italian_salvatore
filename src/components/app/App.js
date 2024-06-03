@@ -1,8 +1,13 @@
 import DishMenu from "../dishMenu/DishMenu";
+import AppHeader from "../appHeader/AppHeader";
 
 const App = () => {
     return (
-        <DishMenu/>
+        <>
+            <AppHeader/>
+            <br></br>
+            <DishMenu/>
+        </>
     )
 }
 
