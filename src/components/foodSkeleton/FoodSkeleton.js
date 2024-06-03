@@ -6,7 +6,6 @@ class FoodSkeleton extends Component {
         super(props);
         this.state = {
             name: props.name,
-            ingredients: props.ingredients,
         }
     }
 

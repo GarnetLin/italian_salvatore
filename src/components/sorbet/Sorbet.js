@@ -20,7 +20,7 @@ class Sorbet extends FoodSkeleton {
     handleFruitChange = e => {
         const selectedFruit = e.target.value;
         this.setState({ fruit: selectedFruit });
-    };
+    }
 
     calculatePrice() {
         if (!this.state.fruit) {
@@ -28,12 +28,13 @@ class Sorbet extends FoodSkeleton {
         }
         return this.state.fruitPrices[this.state.fruit];
     }
+
     render() {
         return (
-            <div>
+            <div className='wrapper'>
                 <div>
                     <label>Choose fruit:</label>
-                    <select value={this.state.fruit} onChange={this.handleFruitChange}>
+                    <select value={this.state.fruit} onChange={this.handleFruitChange} className='selection'>
                         <option value="lemon">Lemon</option>
                         <option value="strawberry">Strawberry</option>
                         <option value="raspberry">Raspberry</option>
