@@ -2,8 +2,6 @@ import FoodSkeleton from "../foodSkeleton/FoodSkeleton";
 
 import Select from 'react-select'
 
-import './pizza.scss'
-
 class Pizza extends FoodSkeleton {
     constructor(props) {
         super(props);

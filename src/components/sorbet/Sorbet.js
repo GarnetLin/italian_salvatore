@@ -1,6 +1,5 @@
 import FoodSkeleton from "../foodSkeleton/FoodSkeleton";
 
-import './sorbet.scss';
 
 class Sorbet extends FoodSkeleton {
     constructor(props) {
