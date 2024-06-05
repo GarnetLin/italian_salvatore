@@ -1,6 +1,5 @@
 import { Component } from "react";
 
-
 class FoodSkeleton extends Component {
     constructor(props) {
         super(props);
